@@ -14,22 +14,23 @@ Putting:
 
 """
 from typing import List
+import pandas as pd
 
 
 class Shot:
     def __init__(self,
                  club: str,
-                 direction: str,
                  distance: str,
-                 flight: str,
+                 direction: str,
                  connection: str,
+                 flight: str = None,
                  holed: bool = None):
         """
         Describes a golf shot.
         """
         self.club = club
-        self.direction = direction
         self.distance = distance
+        self.direction = direction
         self.flight = flight
         self.connection = connection
         self.holed = holed or False
@@ -54,5 +55,28 @@ class Round:
         """
         self.holes = holes
 
+        # Log the total number of shots
+        total_shots = 0
+        for hole in self.holes:
+            total_shots += len(hole.shots)
+        self.total_shots = total_shots
+
+        # Also log the total number of putts
+        total_putts = 0
+        for hole in self.holes:
+            for shot in hole.shots:
+                if shot.club == 'putter':
+                    total_putts += 1
+        self.total_putts = total_putts
+
     def get_round_data(self):
-        pass
+        data = []
+        shot_number = 1
+        for hole in self.holes:
+            for shot in hole.shots:
+                shot_data = shot.__dict__
+                shot_data['shot_number'] = shot_number
+                data.append(shot_data)
+                shot_number += 1
+
+        return pd.DataFrame(data)
