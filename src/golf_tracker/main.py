@@ -1,7 +1,7 @@
 import argparse
 import os
 
-from beta.tracker import Shot, Hole, Round
+from golf_tracker.tracker import Shot, Hole, Round
 
 
 class EndRound(Exception):

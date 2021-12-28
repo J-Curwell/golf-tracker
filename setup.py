@@ -1,9 +1,9 @@
 from setuptools import setup, find_packages
 
 setup(
-    name='beta',
+    name='golf_tracker',
     version='1.0.0',
-    url='https://github.com/J-Curwell/beta.git',
+    url='https://github.com/J-Curwell/golf-tracker.git',
     author='James Curwell',
     author_email='TBC',
     description='TBC',
