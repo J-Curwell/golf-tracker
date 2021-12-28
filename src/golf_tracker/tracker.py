@@ -15,6 +15,7 @@ Putting:
 - Connection: Push / Pull
 """
 
+import os
 from dataclasses import dataclass
 from datetime import datetime
 from typing import List
@@ -85,10 +86,15 @@ class Round:
         return pd.DataFrame(data)
 
     def save_round(self, dir_path: str = None):
-        if dir_path and dir_path[-1] == '/':
-            dir_path = dir_path[:-1]
-
         round_data = self.get_round_data()
         now = datetime.now()
         round_name = f'{self.course}_{now.date()}'
+
+        # Ensuring the save path exists and is correctly formatted
+        dir_path = dir_path or '.'
+        if dir_path[-1] == '/':
+            dir_path = dir_path[:-1]
+        if os.path.exists(dir_path) is False:
+            os.makedirs(dir_path)
+
         round_data.to_csv(f'{dir_path}/{round_name}.csv')
