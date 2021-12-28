@@ -23,7 +23,11 @@ def validated_input(input_name: str):
 
 
 def play_golf(save_path: str = None):
-    save_path = save_path or f'{os.getcwd()}/rounds/'
+    if not save_path:
+        # Default path is in the root of the repo, in a 'saved_rounds/' directory
+        current_dir = os.path.abspath(os.path.dirname(__file__))
+        repo_root = current_dir.split('/src/golf_tracker')[0]
+        save_path = f'{repo_root}/saved_rounds/'
 
     print("Lets play golf!\n\n"
           "Type 'exit', 'quit' or 'q' at any time to end the round.\n\n"
