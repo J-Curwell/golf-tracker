@@ -15,5 +15,5 @@ All round data will be saved as a csv file in the specified directory.
 
 Default save directory is the root of the repo, in `saved_rounds/` (not tracked by git).
 
-Example usage notebook can be found in 
-[notebooks/main.ipnb](https://github.com/J-Curwell/golf-tracker/tree/master/notebooks).
+Example usage notebook can be found at 
+[notebooks/main.ipnb](https://github.com/J-Curwell/golf-tracker/tree/master/notebooks/main.ipynb).
