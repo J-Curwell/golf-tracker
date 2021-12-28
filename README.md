@@ -13,7 +13,7 @@ play_golf(save_path='<directory to save round in>')
 ```
 All round data will be saved as a csv file in the specified directory. 
 
-Default save directory is `./rounds/`.
+Default save directory is the root of the repo, in `saved_rounds/` (not tracked by git).
 
 Example usage notebook can be found in 
 [notebooks/main.ipnb](https://github.com/J-Curwell/golf-tracker/tree/master/notebooks).
